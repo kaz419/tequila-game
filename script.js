@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const decreaseButton = document.getElementById('decrease-player-count');
     const increaseButton = document.getElementById('increase-player-count');
 
+    // ゲームルール設定要素の取得
+    const bellRingProbabilityRadios = document.querySelectorAll('input[name="bellProbability"]');
+    const doubleChanceRadios = document.querySelectorAll('input[name="doubleChance"]');
+
     // ゲーム要素
     const currentPlayerSpan = document.getElementById('current-player');
     const bellImage = document.getElementById('bell-image');
@@ -108,8 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
         bellImage.style.cursor = 'pointer';
         bellImage.classList.remove('shake'); // アニメーションをリセット
 
-        // カスタマイズされたダブル発生確率を設定
-        isDouble = Math.random() * 100 < parseInt(document.querySelector('input[name="doubleChance"]:checked').value);
+        // ダブル発生確率を設定
+        const selectedDoubleChance = document.querySelector('input[name="doubleChance"]:checked').value;
+        isDouble = Math.random() * 100 < parseInt(selectedDoubleChance);
 
         updateTurnInfo();
     };
@@ -117,8 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ベルのタップ処理
     bellImage.addEventListener('click', () => {
         // ベルが鳴る確率に基づいて判定
-        const bellRingProbability = parseInt(document.querySelector('input[name="bellProbability"]:checked').value);
-        const shouldRing = Math.random() * 100 < bellRingProbability;
+        const selectedBellRingProbability = document.querySelector('input[name="bellProbability"]:checked').value;
+        const shouldRing = Math.random() * 100 < parseInt(selectedBellRingProbability);
 
         if (shouldRing) {
             handleWin();
