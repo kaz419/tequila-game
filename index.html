@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜘蛛の糸テキーラベル</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="setup-screen" class="screen active">
+        <div class="container">
+            <h1>蜘蛛の糸テキーラベル</h1>
+            <div id="player-count-section">
+                <p>参加人数を選んでください</p>
+                <div class="player-inputs">
+                    <div class="player-count-control">
+                        <button id="decrease-player-count" class="count-button">-</button>
+                        <span id="player-count-display">2</span>
+                        <button id="increase-player-count" class="count-button">+</button>
+                    </div>
+                    <div class="game-settings">
+                        <p>ベルが鳴る確率:</p>
+                        <div class="probability-options">
+                            <label><input type="radio" name="bellProbability" value="30" checked> 低 (30%)</label>
+                            <label><input type="radio" name="bellProbability" value="50"> 中 (50%)</label>
+                            <label><input type="radio" name="bellProbability" value="70"> 高 (70%)</label>
+                        </div>
+                        <p>ダブル発生確率:</p>
+                        <div class="probability-options">
+                            <label><input type="radio" name="doubleChance" value="10" checked> 低 (10%)</label>
+                            <label><input type="radio" name="doubleChance" value="30"> 中 (30%)</label>
+                            <label><input type="radio" name="doubleChance" value="50"> 高 (50%)</label>
+                        </div>
+                    </div>
+                    <button id="next-button">次へ</button>
+                </div>
+            </div>
+
+            <div id="player-name-section" style="display: none;">
+                <p>プレイヤー名を入力してください</p>
+                <div id="name-inputs">
+                    <!-- 名前入力欄がここに動的に追加されます -->
+                </div>
+                <button id="start-game-button">ゲーム開始</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <a href="#" id="back-to-top" class="top-link">TOPへ</a>
+        <div class="container">
+            <p class="turn-info"><span id="current-player"></span>さんの番</p>
+            <div class="bell-container">
+                <div id="bell-image">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22Z" fill="#d35400"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3919 17H4.60808C3.85908 17 3.48346 16.003 3.84955 15.332C4.36603 14.424 5.08594 12.552 5.08594 10.2C5.08594 6.363 7.6879 3.279 10.0005 2.5V2C10.0005 1.448 10.4485 1 11.0005 1C11.5525 1 12.0005 1.448 12.0005 2V2.5C14.3121 3.279 16.9141 6.363 16.9141 10.2C16.9141 12.552 17.634 14.424 18.1505 15.332C18.5166 16.003 18.141 17 17.3919 17H19.3919Z" fill="#f9ca24"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="message" id="message-area"></p>
+            <button id="reset-game-button">もう一度遊ぶ</button>
+        </div>
+    </div>
+
+    <audio id="bell-sound" src="https://tadanote.tokyo/wp-content/uploads/2021/09/bell03.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

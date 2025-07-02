@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+body {
+    font-family: 'Mochiy Pop One', sans-serif;
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    color: #333;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 400px;
+    width: 90%;
+    margin: 0 auto; /* 中央寄せ */
+}
+
+/* 画面切り替え */
+.screen {
+    display: none;
+}
+.screen.active {
+    display: block;
+}
+
+/* セットアップ画面 */
+#setup-screen h1 {
+    color: #ff6b6b;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 0 #fff;
+}
+
+.player-inputs {
+    display: flex;
+    flex-direction: column; /* 縦並びにする */
+    align-items: center; /* 中央寄せ */
+    gap: 15px; /* 要素間のスペース */
+    margin-top: 20px;
+}
+
+.player-count-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.count-button {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* 丸いボタン */
+    cursor: pointer;
+    box-shadow: 0 4px #d63031;
+    transition: all 0.1s ease;
+}
+
+.count-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px #d63031;
+}
+
+#player-count-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2d3436;
+    min-width: 50px; /* 数字の幅を確保 */
+}
+
+#next-button, #start-game-button {
+    padding: 15px 30px; /* ボタンを大きく */
+    font-size: 1.5rem; /* 文字も大きく */
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px #d63031;
+    transition: all 0.1s ease;
+}
+#next-button:hover, #start-game-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px #d63031;
+}
+
+.game-settings {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.game-settings p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.probability-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.probability-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.probability-options input[type="radio"] {
+    margin-right: 5px;
+    transform: scale(1.2); /* ラジオボタンを少し大きく */
+}
+
+#player-name-section input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid #ff6b6b;
+    background: #fff;
+    color: #333;
+    border-radius: 10px;
+}
+
+#player-name-section button {
+    margin-top: 10px;
+}
+
+/* ゲーム画面 */
+.top-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0,0,0,0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.turn-info {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2d3436;
+    text-align: center;
+}
+
+.bell-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bell-image {
+    width: 220px;
+    height: 220px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
+}
+
+#bell-image svg {
+    width: 100%;
+    height: 100%;
+}
+
+#bell-image:active {
+    transform: scale(0.95) rotate(-5deg);
+}
+
+#bell-image.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-2deg); }
+  20%, 80% { transform: translate3d(2px, 0, 0) rotate(2deg); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-4deg); }
+  40%, 60% { transform: translate3d(4px, 0, 0) rotate(4deg); }
+}
+
+
+.message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d63031;
+    height: 60px;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+#reset-game-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #636e72;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none; /* 最初は隠しておく */
+    margin-top: 20px;
+    box-shadow: 0 4px #2d3436;
+    transition: all 0.1s ease;
+}
+#reset-game-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px #2d3436;
+}
+
+/* スマートフォン用のスタイル */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    #setup-screen h1 {
+        font-size: 2.2rem;
+    }
+
+    .turn-info {
+        font-size: 1.5rem;
+    }
+
+    #bell-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    #bell-image svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .message {
+        font-size: 1.6rem;
+        height: 80px; /* 2行表示になっても大丈夫なように高さを確保 */
+        line-height: 1.4;
+    }
+
+    .top-link {
+        top: 10px;
+        right: 10px;
+        padding: 3px 12px;
+        font-size: 0.8rem;
+    }
+}
